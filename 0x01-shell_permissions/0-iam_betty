@@ -1,2 +1,2 @@
 #!/bin/bash
-useradd betty && usermod -u 1200 betty
+usermod -u 1200 betty
