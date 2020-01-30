@@ -1,0 +1,2 @@
+#!/bin/bash
+chown +xr +r .:. hello
