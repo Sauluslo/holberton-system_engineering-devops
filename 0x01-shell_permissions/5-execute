@@ -1,2 +1,2 @@
 #!/bin/bash
-chwod o + x hello
+chwod -u +x hello
