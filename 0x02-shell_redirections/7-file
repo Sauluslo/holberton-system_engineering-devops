@@ -1,2 +1,2 @@
 #!/bin/bash
-cat > \*\\'"Holberton School"\'\\*$\?\*\*\*\*\*:) | echo "Holberton School" | wc -c
+cat > \*\\'"Holberton School"\'\\*$\?\*\*\*\*\*:) | echo "Holberton School" | wc -l
