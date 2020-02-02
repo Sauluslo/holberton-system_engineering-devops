@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la /etc/passwd /etc/hosts
+cat ./3-twofiles | ls -la /etc/passwd /etc/hosts
