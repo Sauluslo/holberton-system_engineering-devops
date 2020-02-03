@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lRa | grep ^ a | wc -l
+find . -mindepth fd1 -type d | wc -l
