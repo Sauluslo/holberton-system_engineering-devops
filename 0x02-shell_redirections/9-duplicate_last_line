@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n 1 iacta >> "$dest"
+tail -1 iacta >> iacta
