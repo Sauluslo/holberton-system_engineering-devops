@@ -6,8 +6,8 @@
 # Requirements:
 # -You must use the for loop (while and until are forbidden)
 # -Do not display hidden files
-LIST="$(ls)"
-for _ in $LIST; do
-     echo "$LIST" | cut -d "-" -f2-
+LIST=$(ls)
+for i in $LIST; do
+     echo "$i" | cut -d "-" -f2-
 done
 
