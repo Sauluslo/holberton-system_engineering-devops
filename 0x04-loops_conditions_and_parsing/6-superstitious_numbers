@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# This is a Bash script that displays numbers from 1 to 20 and:
+# Displays 4 and then bad luck from China for the 4th loop iteration
+# Displays 9 and then bad luck from Japan for the 9th loop iteration
+# Displays 17 and then bad luck from Italy for the 17th loop iteration
+# Requirements:
+# You must use the while loop (for and until are forbidden)
+# You must use the case statement
+count=1
+
+while [ $count -lt 21 ]; do
+	echo "$count"
+	case $count in
+	4)
+		echo "bad luck from China"
+	;;
+  	9)
+    		echo "bad luck from Japan"
+	;;
+	17)
+		echo "bad luck from Italy"
+	;;
+	esac
+	count=$((count+1))
+done
+
