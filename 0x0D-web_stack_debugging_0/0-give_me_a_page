@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# fixing whatever needed to be fixed (here is your mission)
+# you can see that curling port 80 return a page that contains Hello Holberton
+
+sudo echo "Hello Holberton" > /var/www/html/index.html
+sudo service apache2 restart
