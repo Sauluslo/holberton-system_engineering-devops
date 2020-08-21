@@ -5,8 +5,8 @@
 # You cannot use apt-get remove
 # ABash script that configures the container to fit the above requirements
 
-sudo pkill "apache2"
-sudo chmod 644 /etc/nginx/nginx.conf
-sudo sed -i '1i user nginx;' /etc/nginx/nginx.conf
-sudo sed -i 's/80 default/8080 default/' /etc/nginx/sites-available/default
+sudo pkill apache2
+sudo chmod 660 /etc/nginx/nginx.conf
+sudo chown nginx:nginx /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
 sudo -u nginx service nginx restart
