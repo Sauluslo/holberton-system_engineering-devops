@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Requirements:
+# nginx must be running as nginx user
+# nginx must be listening on all active IPs on port 8080
+# You cannot use apt-get remove
+# ABash script that configures the container to fit the above requirements
+
+sudo pkill "apache2"
+sudo chmod 644 /etc/nginx/nginx.conf
+sudo sed -i '1i user nginx;' /etc/nginx/nginx.conf
+sudo sed -i 's/80 default/8080 default/' /etc/nginx/sites-available/default
+sudo -u nginx service nginx restart
