@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # fixing whatever needed to be fixed (here is your mission)
 # you can see that curling port 80 return a page that contains Hello Holberton
+# docker ps
 
+service apache2 start
 echo "Hello Holberton" > /var/www/html/index.html
 service apache2 restart
