@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# intall nginx web server and configure to port 80
-apt-get -y update
-apt-get -y install nginx
-ufw allow 'Nginx HTTP'
+# install web server
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
-sed -i "46i error_page 404 /custom_404.html;" /etc/nginx/sites-available/default
-sed -i "46i rewrite ^/redirect_me  permanent;" /etc/nginx/sites-available/default
-service nginx restart
+sudo echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+sudo sed -i '/listen 80 default_server/a error_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}' /etc/nginx/sites-available/default
+sudo service nginx restart
