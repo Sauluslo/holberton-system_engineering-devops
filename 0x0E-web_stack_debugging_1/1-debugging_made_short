@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Make your fix short and sweet.
 cp -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx restart
+service nginx restart
 echo '9897' | sudo tee /run/nginx.pid
