@@ -22,13 +22,13 @@ frontend http
         bind *:80
         bind *:443 ssl crt /etc/haproxy/certs/www.aldebaranlopera.tech.pem
         mode http
-        default_backend Sauluslo
+        default_backend sauluslo
 
-backend Sauluslo
+backend sauluslo
         balance roundrobin
         mode http
-        server 1617-web-01 34.73.161.119:80 check
-        server 1617-web-02 104.196.185.21:80 check
+        server web-01 34.73.161.119:80 check
+        server web-02 104.196.185.21:80 check
 
 defaults
         log     global
