@@ -1,42 +1,27 @@
 #!/usr/bin/python3
-""" get tasks from user and export to json file"""
+"""
+    Python script that, using this REST API, for a given employee ID,
+    returns information about his/her TODO list progress.
+"""
 
-from requests import get
 import json
-import sys
+import requests as rq
 
-
-DOMAIN = 'https://jsonplaceholder.typicode.com/'
-
-
-def employee_tasks(USER_ID):
-    """OJ yeah one more time"""
-    req = get('{}todos?userId={}'.format(DOMAIN, USER_ID))
-    obj = req.json()
-    userReq = get('{}users?id={}'.format(DOMAIN, USER_ID))
-    user = userReq.json()
-    USERNAME = user[0].get('username')
-    tasks = []
-    for task in obj:
-        TASK_TITLE = task.get('title')
-        TASK_COMPLETED_STATUS = task.get('completed')
-        dictionary = {
-                    "task": TASK_TITLE,
-                    "completed": TASK_COMPLETED_STATUS,
-                    "username": USERNAME
-                    }
-        tasks.append(dictionary)
-    return json.dumps(tasks)
-
-
-def todo_all_employees():
-    """Do ya think im sexy"""
-
-    with open("todo_all_employees.json", encoding='utf-8', mode='w') as file:
-        tasks = {}
-        for i in range(1, 10):
-            userTasks = employee_tasks(i)
-            tasks[i] = userTasks
-        file.write(str(tasks))
-if __name__ == '__main__':
-    todo_all_employees()
+if __name__ == "__main__":
+    ids = [i for i in range(1, 11)]
+    session = rq.Session()
+    info = {}
+    for id in ids:
+        URL_users = "https://jsonplaceholder.typicode.com/users/{}".format(id)
+        URL_ = "https://jsonplaceholder.typicode.com/users/{}/todos".format(id)
+        response = session.get(URL_users).json()
+        username = response['username']
+        task = session.get(URL_).json()
+        tasks = []
+        info[id] = tasks
+        for content in task:
+            tasks.append({"username": username,
+                          "task": content['title'],
+                          "completed": content['completed']})
+    with open("todo_all_employees.json", "w") as file:
+        json.dump(info, file)
